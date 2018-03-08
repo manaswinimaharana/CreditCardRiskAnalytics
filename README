@@ -1,0 +1,48 @@
+hdfs dfs -mkdir /tmp/credit_data_input
+unzip UCI_Credit_Card.csv.zip 
+hdfs dfs -put UCI_Credit_Card.csv /tmp/credit_data_input/
+
+
+In Hive - 
+
+Create table credit_data_input(
+ID STRING,
+LIMIT_BAL                     STRING,
+SEX                             STRING,
+EDUCATION                       STRING,
+MARRIAGE                        STRING,
+AGE                             STRING,
+PAY_0                           STRING,
+PAY_2                           STRING,
+PAY_3                           STRING,
+PAY_4                           STRING,
+PAY_5                           STRING,
+PAY_6                           STRING,
+BILL_AMT1                     STRING,
+BILL_AMT2                     STRING,
+BILL_AMT3                     STRING,
+BILL_AMT4                     STRING,
+BILL_AMT5                     STRING,
+BILL_AMT6                     STRING,
+PAY_AMT1                      STRING,
+PAY_AMT2                      STRING,
+PAY_AMT3                      STRING,
+PAY_AMT4                      STRING,
+PAY_AMT5                      STRING,
+PAY_AMT6                      STRING,
+payment_next_month      STRING
+)
+
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+   "separatorChar" = ",",
+   "quoteChar"     = "\""
+)  
+LOCATION '/tmp/credit_data_input'
+tblproperties ("skip.header.line.count"="1");
+
+create table  credit_data_input_prq stored as parquet as 
+select * from credit_data_input ;
+
+
+invalidate metadata credit_data_input_prq ; 

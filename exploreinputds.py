@@ -202,3 +202,9 @@ import sys
 from pyspark.sql import SparkSession
 
 
+val df = spark   \
+      .read   \
+      .option("header", true) \
+      .option("inferSchema", true) \
+      .csv(path)
+
