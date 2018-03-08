@@ -59,6 +59,8 @@ df.head()
 df.dtypes
 df.shape
 df.isnull().sum()
+# Categorical variables description
+df[['SEX', 'EDUCATION', 'MARRIAGE']].describe()
 
 
 # rename column for easy reference
@@ -187,6 +189,17 @@ plot_confusion(lr_pred)
 # plot roc curve
 
 plot_roc(lr_prob)
+
+
+
+
+
+#STATSMODELS 
+
+
+
+
+
 
 
 
