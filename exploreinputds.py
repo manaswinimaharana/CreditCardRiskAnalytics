@@ -197,10 +197,13 @@ plot_roc(lr_prob)
 #STATSMODELS 
 
 
+import statsmodels.api as sm
+from statsmodels.tools.tools import add_constant
+from sklearn import linear_model,cross_validation, feature_selection,preprocessing
 
-
-
-
+x_train,x_test, y_train, y_test = cross_validation.train_test_split(X, y, train_size=0.80, random_state=5)
+model = sm.Logit(y_train, add_constant(X_train)).fit()
+model.summary()
 
 
 # Spark 
