@@ -4,6 +4,7 @@
 #Define a function 
 def say_hello():
   print ("hello")
+  print("hello again")
 
 #calling the function 
 say_hello()
@@ -46,12 +47,13 @@ print(f(1,1,1,1))
 input=[36.5,37.5,39]
 
 #using loop
-input=[36.5,37.5,39]
+input=[36.5,37.5,39,87]
 for value in input: 
   print(mySquare(value))
 
 #Same using map - just different way to acheive it  
 F = map(mySquare,input)
+
 for t in F:
   print (t)
 
@@ -62,7 +64,8 @@ input1 = [(36.5,786),
 input12 = [(36.5,786),
          (37.5,67),
          (39,78)]
-SquareVal = map(lambda x,y: x[0]*y[1], input,input12)
+SquareVal = map(lambda x: x*x,input)
+SquareVal = map(lambda x,y: x[0]*x[0], input,input12)
 
 for value in list(SquareVal):
   print value
@@ -87,5 +90,6 @@ import functools
 #The function reduce(func, seq) continually applies the 
 #function func() to the sequence seq.
 #It returns a single value. 
-A=functools.reduce(lambda x,y: x+y, [47,11,42,13])
+
+A=functools.reduce(lambda x,y: x+y, input)
 print (A)

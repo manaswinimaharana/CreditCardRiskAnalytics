@@ -7,9 +7,12 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder \
       .appName("Intro to Spark") \
       .getOrCreate()
+
 sc=spark.sparkContext
 #-------------------------------------------------------------------
 spark.version
+
+
 
 
 # Let's pull a function from previous Python ex 
